@@ -18,4 +18,12 @@ class Player
     @lives -= 1
     puts "#{name} loses a life, leaving them with #{lives}!"
   end
+
+  def add_score
+    @score += 1
+  end
+
+  def answer_question
+    $stdin.gets.chomp
+  end
 end

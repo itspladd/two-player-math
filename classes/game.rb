@@ -24,8 +24,7 @@ class Game
 
   def game_loop
     while @game_running
-      puts "******************"
-      puts "game loop start"
+      puts "******* NEW TURN *******"
       puts "current player is #{@current_player.name}"
       @current_player.lose_life
       @game_running = !game_over?
@@ -50,4 +49,5 @@ class Game
     puts "Players still in the game: ", active_players
     active_players.length == 1
   end
+
 end
