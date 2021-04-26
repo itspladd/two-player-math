@@ -1,6 +1,3 @@
-require_relative "classes/game"
-require_relative "classes/player"
-require_relative "classes/question"
 require "pp"
 
 class Game_Runner
@@ -53,5 +50,3 @@ class Game_Runner
     @games << game
   end
 end
-
-game = Game_Runner.new
