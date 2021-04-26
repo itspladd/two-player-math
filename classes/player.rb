@@ -13,4 +13,9 @@ class Player
     @name = gets.chomp
     puts "New player '#{name}' added!"
   end
+
+  def lose_life
+    @lives -= 1
+    puts "#{name} loses a life, leaving them with #{lives}!"
+  end
 end

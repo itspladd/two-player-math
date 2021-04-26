@@ -34,7 +34,6 @@ class Game_Runner
   end
 
   def start_game
-    puts "Starting a new game!"
     add_game(Game.new)
   end
 
