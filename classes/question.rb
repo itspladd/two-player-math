@@ -20,7 +20,3 @@ class Question
   end
 
 end
-
-question = Question.new
-
-puts question

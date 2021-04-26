@@ -6,6 +6,7 @@ class Game
     puts "Starting a new game!"
     setup
     game_loop
+    game_end
   end
 
   def setup
@@ -25,11 +26,25 @@ class Game
   def game_loop
     while @game_running
       puts "******* NEW TURN *******"
-      puts "current player is #{@current_player.name}"
-      @current_player.lose_life
+      print "#{@current_player.name}: "
+      print "#{@current_player.score} points, "
+      print "#{@current_player.lives} lives\n"
+
+      question = new_question
+      print @current_player.name, ": "
+      puts question
+      answer = @current_player.answer_question
+
+      if question.solution == answer.to_i
+        puts "Correct!"
+        @current_player.add_score
+      else
+        puts "Wrong! The answer was #{question.solution}."
+        @current_player.lose_life
+      end
+
       @game_running = !game_over?
       @current_player = next_player
-      puts "game loop end"
     end
   end
 
@@ -43,11 +58,22 @@ class Game
     @players.rotate![0]
   end
 
+  def new_question
+    @questions << Question.new
+    @questions.last
+  end
+
+  # If there's only one player with lives remaining, return true.
   def game_over?
     active_players = @players.select {|player| player.lives > 0}
-    puts "Checking game over."
-    puts "Players still in the game: ", active_players
     active_players.length == 1
   end
 
+  def game_end
+    puts "******* GAME OVER! *******"
+    puts "Final score:"
+    @players.sort! {|player| player.score}
+    @players.each {|player| puts "|#{player.name}: #{player.score} points |"}
+    puts "Thanks for playing!"
+  end
 end

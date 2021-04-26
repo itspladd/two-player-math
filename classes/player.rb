@@ -16,11 +16,12 @@ class Player
 
   def lose_life
     @lives -= 1
-    puts "#{name} loses a life, leaving them with #{lives}!"
+    puts "#{name} loses a life. They have #{lives} left!"
   end
 
   def add_score
     @score += 1
+    puts "#{name}'s score is now #{score}!"
   end
 
   def answer_question
